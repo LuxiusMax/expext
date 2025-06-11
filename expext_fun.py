@@ -20,7 +20,12 @@ def frisatday():
     for file in data_source:
         if ".csv" in file:
             data_source_related.append(file)
-    print(data_source_related)
+            print(data_source_related)
+            shutil.move(f"{source_path}\\{data_source_related[0]}", f"{process_path}\\{data_source_related[0]}")
+            df = pd.read_csv(f"{process_path}\\{data_source_related[0]}")
+            print(df)
+
+
 
     
 
@@ -41,6 +46,13 @@ if __name__ == "__main__":
     for file in data_source:
         if ".csv" in file:
             data_source_related.append(file)
-    print(data_source_related)
+            print(data_source)
+            print(data_source_related)
+            shutil.move(f"{source_path}\\{data_source_related[0]}", f"{process_path}\\{data_source_related[0]}")
+            df = pd.read_csv(f"{process_path}\\{data_source_related[0]}", encoding = 'latin1')
+            print(df)
+
+
+
 
 # %%
