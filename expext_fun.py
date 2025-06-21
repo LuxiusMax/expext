@@ -48,10 +48,22 @@ if __name__ == "__main__":
     for file in data_source_related:
         shutil.move(f"{source_path}\\{file}", f"{process_path}\\{file}")         
         df_temp = pd.read_csv(f"{process_path}\\{file}", encoding = "utf-8")
-        df_temp.
+        print(file)
         # df = pd.concat()
 
         print(df_temp)
+        print(df_temp.isna().sum())
+        df_temp.dropna(axis = 0, how = 'any', inplace= True, ignore_index= True)
+        print(df_temp.isna().sum())
+        print(df_temp)
+        print(df_temp.keys())
+        print(df_temp.columns)
+        print(df_temp.loc[0])
+        df_temp.columns = df_temp.loc[0]
+        df_temp.drop(index = 0, inplace= True)
+        print(df_temp)
+        print(df_temp.keys())
+        print(df_temp.columns)
     
     for file in data_source_related:
         shutil.move(f"{process_path}\\{file}", f"{source_path}\\{file}")
