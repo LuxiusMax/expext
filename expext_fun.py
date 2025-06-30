@@ -41,29 +41,21 @@ if __name__ == "__main__":
 
     # creating an empty dataframs
 
-    df = pd.DataFrame()
+    df_total = pd.DataFrame()
 
     data_source = os.listdir(source_path)
     data_source_related = [f for f in data_source if f.endswith(".csv")]
     for file in data_source_related:
         shutil.move(f"{source_path}\\{file}", f"{process_path}\\{file}")         
         df_temp = pd.read_csv(f"{process_path}\\{file}", encoding = "utf-8")
-        print(file)
-        # df = pd.concat()
-
-        print(df_temp)
-        print(df_temp.isna().sum())
         df_temp.dropna(axis = 0, how = 'any', inplace= True, ignore_index= True)
-        print(df_temp.isna().sum())
-        print(df_temp)
-        print(df_temp.keys())
-        print(df_temp.columns)
-        print(df_temp.loc[0])
         df_temp.columns = df_temp.loc[0]
         df_temp.drop(index = 0, inplace= True)
         print(df_temp)
-        print(df_temp.keys())
         print(df_temp.columns)
+        print(file)
+        df_temp["מספר רכב"] = df_temp["car_number"]
+        print(df_temp)
     
     for file in data_source_related:
         shutil.move(f"{process_path}\\{file}", f"{source_path}\\{file}")
